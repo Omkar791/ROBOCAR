@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    
+    <title>
+
+    </title>
+</head>
+<body>
+    
+<div class="container">
+    <h1>hello World</h1>
+
+
+    <div class="video-grid">
+        <video id="video" src="" muted playsinline autoplay></video>
+        <video id="remoteVideo" src=""></video>
+      </div>
+
+
+
+
+</div>
+
+    <script>
+        const videoGrid = document.getElementById('video-grid')
+        //const Myvideo  = document.createElement('video')
+        const remoteVideo = document.getElementById('remoteVideo')
+        
+        const videoElement = document.getElementById('video')
+
+        let localStream
+
+ 
+        const  hasUserMedia = () =>{
+            navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+            return !!navigator.getUserMedia; 
+            } 
+            
+
+        
+
+        const getdata = () =>{
+            navigator.mediaDevices.getUserMedia({audio:true,video:true})
+            .then( (stream) =>{
+                videoElement.srcObject = stream 
+                localStream = stream
+            
+            })
+            .catch(error =>{
+                console.log(error)
+            }) 
+        }
+
+        getdata()
+
+    </script>
+
+</body>
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+
+
+
+</html>
